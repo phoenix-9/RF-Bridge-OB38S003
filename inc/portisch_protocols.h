@@ -324,6 +324,21 @@ __code static uint8_t PROTOCOL_BIT0(H13726)[]  = { LOW(1), HIGH(0) };
 __code static uint8_t PROTOCOL_BIT1(H13726)[]  = { LOW(2), HIGH(0) };
 #endif
 
+/*
+ * Hunter/Casablanca ceiling fans
+ * FCC ID IN2TX47
+ * This is similar to HCS200/HCS300 protocol, see rtl_433 project
+ * but without rolling codes.  12 bits sync.  66 bits data.
+ * Device ID is transmitted first.  Then the data.
+ */
+#if defined(PORTISCH_SUPPORT_HNTER_PROTOCOL)
+#define HUNTER
+__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 370, 772, 1500, 9000 };
+__code static uint8_t PROTOCOL_START(HUNTER)[] = { LOW(3), HIGH(0) };
+__code static uint8_t PROTOCOL_BIT0(HUNTER)[]  = { LOW(1), HIGH(0) };
+__code static uint8_t PROTOCOL_BIT1(HUNTER)[]  = { LOW(2), HIGH(0) };
+#endif
+
 __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 {
 #if defined(PORTISCH_SUPPORT_PT226X_PROTOCOL)
@@ -600,6 +615,7 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 		},
 #endif
 };
+
 
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
