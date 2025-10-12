@@ -16,7 +16,7 @@
 #if defined(BUCKET_SNIFFING_INCLUDED)
     // if bucket sniffing is included, we cannot fit many protocols in memory so we just allow the standard one
     // PT2260, EV1527,... original RF bridge protocol
-    #define PORTISCH_SUPPORT_PT226X_PROTOCOL
+    #define PORTISCH_SUPPORT_HUNTER_PROTOCOL
 
 #elif defined(MULTIPLE_PROTOCOLS_INCLUDED)
     
