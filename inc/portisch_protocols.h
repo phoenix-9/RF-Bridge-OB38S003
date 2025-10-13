@@ -333,10 +333,11 @@ __code static uint8_t PROTOCOL_BIT1(H13726)[]  = { LOW(2), HIGH(0) };
  */
 #if defined(PORTISCH_SUPPORT_HUNTER_PROTOCOL)
 #define HUNTER
-__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 370, 772, 1500, 9000 };
-__code static uint8_t PROTOCOL_START(HUNTER)[] = { LOW(3), HIGH(0) };
-__code static uint8_t PROTOCOL_BIT0(HUNTER)[]  = { LOW(1), HIGH(0) };
-__code static uint8_t PROTOCOL_BIT1(HUNTER)[]  = { LOW(2), HIGH(0) };
+__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400, 800, 5980, 10000 };
+__code static uint8_t PROTOCOL_START(HUNTER)[] = { HIGH(0), LOW(2) };
+__code static uint8_t PROTOCOL_BIT0(HUNTER)[]  = { HIGH(1), LOW(0) };
+__code static uint8_t PROTOCOL_BIT1(HUNTER)[]  = { HIGH(0), LOW(1) };
+__code static uint8_t PROTOCOL_END(HUNTER)[]   = { HIGH(0), LOW(3) };
 #endif
 
 __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
@@ -623,6 +624,7 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 			{ &PROTOCOL_START(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_START(HUNTER)) },
 			{ &PROTOCOL_BIT0(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER)) },
 			{ &PROTOCOL_BIT1(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER)) },
+			{ &PROTOCOL_END(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER)) },
 			{ NULL, 0 },
 			66
 		},
@@ -633,4 +635,5 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
 #endif // INC_RF_PROTOCOLS_H_
+
 
