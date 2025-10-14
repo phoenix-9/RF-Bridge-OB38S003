@@ -66,6 +66,6 @@
     
 #else
     // error check
-    #error Please defined either BUCKET_SNIFFING_INCLUDED or MULTIPLE_PROTOCOLS_INCLUDED in Makefile.
+    #error Please define either BUCKET_SNIFFING_INCLUDED or MULTIPLE_PROTOCOLS_INCLUDED in Makefile.
 
 #endif
