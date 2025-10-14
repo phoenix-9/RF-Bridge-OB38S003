@@ -625,7 +625,6 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 			{ &PROTOCOL_BIT0(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER)) },
 			{ &PROTOCOL_BIT1(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER)) },
 			{ &PROTOCOL_END(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER)) },
-			{ NULL, 0 },
 			66
 		},
 #endif
@@ -635,5 +634,6 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
 #endif // INC_RF_PROTOCOLS_H_
+
 
 
