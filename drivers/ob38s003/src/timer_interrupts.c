@@ -96,7 +96,7 @@ void init_first_delay_us(const uint16_t timeout)
     
     // FIXME: portisch removed 65micros because of startup delay
     //        but I do not see any information on this in ob38s003 datasheet
-    gTimer0Timeout  = timeout - 72;
+    gTimer0Timeout  = timeout;
 
     // start timer
     TR0 = true;
@@ -136,7 +136,7 @@ void init_second_delay_us(const uint16_t timeout)
     
     // FIXME: portisch removed 65micros because of startup delay
     //        but I do not see any information on this in ob38s003 datasheet
-    gTimer1Timeout  = timeout - 72;
+    gTimer1Timeout  = timeout;
 
     // start timer
     TR1 = true;
@@ -258,3 +258,4 @@ void timer2_isr(void) __interrupt (d_T2_Vector)
     
 
 }
+
