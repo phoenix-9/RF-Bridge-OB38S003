@@ -77,33 +77,6 @@ void set_timer1_reload(const uint8_t reload)
     TL1 = reload;
 }
 
-
-// not used in portisch, but can be used in rcswitch
-// but at one time we removed to save on code space
-#if 1
-
-/*
- * Init Timer 0 with microseconds interval, maximum is 65535micros.
- */
-void init_first_delay_us(const uint16_t timeout)
-{
-    // clock source is fosc
-    PFCON &= ~0x03;
-    PFCON |=  0x01;
-    
-    //
-    set_timer0_reload(TIMER0_RELOAD_10MICROS);
-    
-    // FIXME: portisch removed 65micros because of startup delay
-    //        but I do not see any information on this in ob38s003 datasheet
-    gTimer0Timeout  = timeout;
-
-    // start timer
-    TR0 = true;
-}
-
-#endif
-
 /*
  * Init Timer 0 with milliseconds interval, maximum is ~2.5ms.
  */
@@ -258,5 +231,6 @@ void timer2_isr(void) __interrupt (d_T2_Vector)
     
 
 }
+
 
 
