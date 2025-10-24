@@ -333,7 +333,7 @@ __code static uint8_t PROTOCOL_BIT1(H13726)[]  = { LOW(2), HIGH(0) };
  */
 #if defined(PORTISCH_SUPPORT_HUNTER_PROTOCOL)
 #define HUNTER
-__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400, 800, 5600, 10400 }; */
+__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400, 800, 5600, 10400 };
 // __code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400-76, 800-76, 5980, 10000 };
 __code static uint8_t PROTOCOL_START(HUNTER)[] = { HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
                                                    HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
@@ -638,6 +638,7 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
 #endif // INC_RF_PROTOCOLS_H_
+
 
 
 
