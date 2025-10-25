@@ -16,17 +16,19 @@
 #if defined(BUCKET_SNIFFING_INCLUDED)
     // if bucket sniffing is included, we cannot fit many protocols in memory so we just allow the standard one
     // PT2260, EV1527,... original RF bridge protocol
-    #define PORTISCH_SUPPORT_HUNTER_PROTOCOL
+    #define PORTISCH_SUPPORT_HUNTER_TRANSMIT_PROTOCOL
 
 #elif defined(MULTIPLE_PROTOCOLS_INCLUDED)
+    #define PORTISCH_SUPPORT_HUNTER_TRANSMIT_PROTOCOL
+    #define PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL
     
     // typical protocols, comment to disable
     // PT2260, EV1527,... original RF bridge protocol
-    #define PORTISCH_SUPPORT_PT226X_PROTOCOL
+    //#define PORTISCH_SUPPORT_PT226X_PROTOCOL
     // HT6P20X chips
-    #define PORTISCH_SUPPORT_HT6P20X_PROTOCOL
+    //#define PORTISCH_SUPPORT_HT6P20X_PROTOCOL
     // HT12A/HT12E chips
-    #define PORTISCH_SUPPORT_HT12_PROTOCOL
+    //#define PORTISCH_SUPPORT_HT12_PROTOCOL
 
     // more protocols, uncomment to enable
     // Rohrmotor24
@@ -36,13 +38,13 @@
     // Alecto WS-1200 Series Wireless Weather Station	
     //#define PORTISCH_SUPPORT_WS_1200_PROTOCOL
     // ALDI Remote controlled wall sockets, 4x
-    #define PORTISCH_SUPPORT_ALDI_4x_PROTOCOL
+    //#define PORTISCH_SUPPORT_ALDI_4x_PROTOCOL
     // Meteo SPxx -  Weather station (PHU Metrex)	
-    #define PORTISCH_SUPPORT_SP45_PROTOCOL
+    //#define PORTISCH_SUPPORT_SP45_PROTOCOL
     // Dooya DC90 remote    
-    #define PORTISCH_SUPPORT_DC90_PROTOCOL
+    //#define PORTISCH_SUPPORT_DC90_PROTOCOL
     // Digoo DG-HOSA Smart 433MHz Wireless Household Carbon Monoxide Sensor
-    #define PORTISCH_SUPPORT_DG_HOSA_PROTOCOL
+    //#define PORTISCH_SUPPORT_DG_HOSA_PROTOCOL
     // HT12A/HT12E chips - Generic Doorbell
     //#define PORTISCH_SUPPORT_HT12a_PROTOCOL
     // HT12A/HT12E chips - Atag Extractor - Plus/Minus/Lights/Timer
