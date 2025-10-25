@@ -331,17 +331,26 @@ __code static uint8_t PROTOCOL_BIT1(H13726)[]  = { LOW(2), HIGH(0) };
  * but without rolling codes.  12 sync pulses.  66 bits data.
  * Device ID is transmitted first.  Then the data.
  */
-#if defined(PORTISCH_SUPPORT_HUNTER_PROTOCOL)
-#define HUNTER
-__code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400, 800, 5100, 10400 };
+#if defined(PORTISCH_SUPPORT_HUNTER_TRANSMIT_PROTOCOL)
+#define HUNTER_TRANSMIT
+__code static uint16_t PROTOCOL_BUCKETS(HUNTER_TRANSMIT)[] = { 400, 800, 5100, 10400 };
 // __code static uint16_t PROTOCOL_BUCKETS(HUNTER)[] = { 400-76, 800-76, 5980, 10000 };
-__code static uint8_t PROTOCOL_START(HUNTER)[] = { HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
+__code static uint8_t PROTOCOL_START(HUNTER_TRANSMIT)[] = { HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
                                                    HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
                                                    HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(0),
                                                    HIGH(0), LOW(0), HIGH(0), LOW(0), HIGH(0), LOW(2) };
-__code static uint8_t PROTOCOL_BIT0(HUNTER)[]  = { HIGH(1), LOW(0) };
-__code static uint8_t PROTOCOL_BIT1(HUNTER)[]  = { HIGH(0), LOW(1) };
-__code static uint8_t PROTOCOL_END(HUNTER)[]   = { LOW(3) };
+__code static uint8_t PROTOCOL_BIT0(HUNTER_TRANSMIT)[]  = { HIGH(1), LOW(0) };
+__code static uint8_t PROTOCOL_BIT1(HUNTER_TRANSMIT)[]  = { HIGH(0), LOW(1) };
+__code static uint8_t PROTOCOL_END(HUNTER_TRANSMIT)[]   = { LOW(3) };
+#endif
+
+#if defined(PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL)
+#define HUNTER_RECEIVE
+__code static uint16_t PROTOCOL_BUCKETS(HUNTER_RECEIVE)[] = { 400, 800, 5100, 10400 };
+__code static uint8_t PROTOCOL_START(HUNTER_RECEIVE)[] = { HIGH(0), LOW(2) };
+__code static uint8_t PROTOCOL_BIT0(HUNTER_RECEIVE)[]  = { HIGH(1), LOW(0) };
+__code static uint8_t PROTOCOL_BIT1(HUNTER_RECEIVE)[]  = { HIGH(0), LOW(1) };
+__code static uint8_t PROTOCOL_END(HUNTER_RECEIVE)[]   = { LOW(3) };
 #endif
 
 __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
@@ -619,16 +628,29 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 			36
 		},
 #endif
-#if defined(PORTISCH_SUPPORT_HUNTER_PROTOCOL)
+#if defined(PORTISCH_SUPPORT_HUNTER_TRANSMIT_PROTOCOL)
 		/*
 		 * Hunter/Casablanca ceiling fans
 		 */
 		{
-			{ &PROTOCOL_BUCKETS(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BUCKETS(HUNTER)) },
-			{ &PROTOCOL_START(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_START(HUNTER)) },
-			{ &PROTOCOL_BIT0(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER)) },
-			{ &PROTOCOL_BIT1(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER)) },
-			{ &PROTOCOL_END(HUNTER)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER)) },
+			{ &PROTOCOL_BUCKETS(HUNTER_TRANSMIT)[0], ARRAY_LENGTH(PROTOCOL_BUCKETS(HUNTER_TRANSMIT)) },
+			{ &PROTOCOL_START(HUNTER_TRANSMIT)[0], ARRAY_LENGTH(PROTOCOL_START(HUNTER_TRANSMIT)) },
+			{ &PROTOCOL_BIT0(HUNTER_TRANSMIT)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER_TRANSMIT)) },
+			{ &PROTOCOL_BIT1(HUNTER_TRANSMIT)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER_TRANSMIT)) },
+			{ &PROTOCOL_END(HUNTER_TRANSMIT)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER_TRANSMIT)) },
+			66
+		},
+#endif
+#if defined(PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL)
+		/*
+		 * Hunter/Casablanca ceiling fans
+		 */
+		{
+			{ &PROTOCOL_BUCKETS(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BUCKETS(HUNTER_RECEIVE)) },
+			{ &PROTOCOL_START(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_START(HUNTER)_RECEIVE) },
+			{ &PROTOCOL_BIT0(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER_RECEIVE)) },
+			{ &PROTOCOL_BIT1(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER_RECEIVE)) },
+			{ &PROTOCOL_END(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER_RECEIVE)) },
 			66
 		},
 #endif
@@ -638,6 +660,7 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
 #endif // INC_RF_PROTOCOLS_H_
+
 
 
 
