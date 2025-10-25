@@ -58,8 +58,8 @@ TARGET_MCU = OB38S003
 
 # defined here so result can be included in file name
 # uncomment only one
-RF_RX_FEATURE = BUCKET_SNIFFING_INCLUDED
-#RF_RX_FEATURE = MULTIPLE_PROTOCOLS_INCLUDED
+#RF_RX_FEATURE = BUCKET_SNIFFING_INCLUDED
+RF_RX_FEATURE = MULTIPLE_PROTOCOLS_INCLUDED
 
 
 # these are the maximum clock speeds
@@ -275,4 +275,5 @@ $(OBJECT_DIR)/%.rel: $(SOURCE_DIR)/%.c
 $(OBJECT_DIR)/%.rel: $(DRIVER_SRC_DIR)/%.c
 	@echo "Compiling $^"
 	mkdir -p $(dir $@)
+
 	$(CC) $(CFLAGS) -c -o $@ $^
