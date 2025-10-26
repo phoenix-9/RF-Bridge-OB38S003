@@ -28,7 +28,7 @@ __xdata uint8_t RF_DATA[RF_DATA_BUFFERSIZE];
 // Bit 7:	1 Data received, 0 nothing received
 // Bit 6-0:	Protocol identifier
 __xdata uint8_t RF_DATA_STATUS = 0;
-__xdata rf_sniffing_mode_t sniffing_mode = STANDARD;
+__xdata rf_sniffing_mode_t sniffing_mode = ADVANCED;
 
 
 // PT226x variables
