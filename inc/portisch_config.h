@@ -20,7 +20,7 @@
 
 #elif defined(MULTIPLE_PROTOCOLS_INCLUDED)
     #define PORTISCH_SUPPORT_HUNTER_TRANSMIT_PROTOCOL
-    #define PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL
+    // #define PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL
     
     // typical protocols, comment to disable
     // PT2260, EV1527,... original RF bridge protocol
