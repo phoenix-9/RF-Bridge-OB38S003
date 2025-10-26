@@ -679,7 +679,11 @@ void main (void)
 	//last_sniffing_command = RF_CODE_SNIFFING_ON;
 	//uart_command          = RF_CODE_SNIFFING_ON;
 #else
-    PCA0_StopSniffing();
+	// Or else what?  If not bucket sniffing then advanced sniffing should be on.
+    // PCA0_StopSniffing();
+	sniffing_mode = ADVANCED;
+	PCA0_DoSniffing();
+	last_sniffing_command = RF_CODE_SNIFFING_ON;
 #endif
 
 
