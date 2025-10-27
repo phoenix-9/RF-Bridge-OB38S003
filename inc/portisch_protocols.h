@@ -343,15 +343,6 @@ __code static uint8_t PROTOCOL_BIT1(HUNTER)[]  = { HIGH(0), LOW(1) };
 __code static uint8_t PROTOCOL_END(HUNTER)[]   = { LOW(3) };
 #endif
 
-#if defined(PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL)
-#define HUNTER_RECEIVE
-__code static uint16_t PROTOCOL_BUCKETS(HUNTER_RECEIVE)[] = { 400, 800, 5100, 10400 };
-__code static uint8_t PROTOCOL_START(HUNTER_RECEIVE)[] = { HIGH(0), LOW(2) };
-__code static uint8_t PROTOCOL_BIT0(HUNTER_RECEIVE)[]  = { HIGH(1), LOW(0) };
-__code static uint8_t PROTOCOL_BIT1(HUNTER_RECEIVE)[]  = { HIGH(0), LOW(1) };
-__code static uint8_t PROTOCOL_END(HUNTER_RECEIVE)[]   = { LOW(3) };
-#endif
-
 __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 {
 #if defined(PORTISCH_SUPPORT_PT226X_PROTOCOL)
@@ -640,25 +631,13 @@ __code static struct BUCKET_PROTOCOL_DATA PROTOCOL_DATA[] =
 			66
 		},
 #endif
-#if defined(PORTISCH_SUPPORT_HUNTER_RECEIVE_PROTOCOL)
-		/*
-		 * Hunter/Casablanca ceiling fans
-		 */
-		{
-			{ &PROTOCOL_BUCKETS(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BUCKETS(HUNTER_RECEIVE)) },
-			{ &PROTOCOL_START(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_START(HUNTER_RECEIVE)) },
-			{ &PROTOCOL_BIT0(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BIT0(HUNTER_RECEIVE)) },
-			{ &PROTOCOL_BIT1(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_BIT1(HUNTER_RECEIVE)) },
-			{ &PROTOCOL_END(HUNTER_RECEIVE)[0], ARRAY_LENGTH(PROTOCOL_END(HUNTER_RECEIVE)) },
-			66
-		},
-#endif
 };
 
 
 // https://www.ashn.dev/blog/2020-01-06-c-array-length.html
 #define NUM_OF_PROTOCOLS (sizeof(PROTOCOL_DATA) / sizeof(PROTOCOL_DATA[0]))
 #endif // INC_RF_PROTOCOLS_H_
+
 
 
 
